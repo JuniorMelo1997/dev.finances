@@ -45,6 +45,11 @@
                     <p>R$ 16,141,00</p>
                 </div>
             </div>
+
+            <div class="add-new">
+                <p class="button-add-new">Adicionar transação +</p>
+            </div>
+
             <div class="description">
                 <table>
                     <tr>
@@ -75,6 +80,32 @@
                 </table>
             </div>
         </div>
+
+        <div class="modal-container inactive">
+            <div class="modal-content overlay">
+                <div class="modal">
+                    <form action="">
+                        <h3>Nova Transação</h3>
+                        <label for="transaction-description" class="sr-only">Descrição</label>
+                        <input type="text" placeholder="Descrição" id="transaction-description">
+
+                        <label for="transaction-value" class="sr-only">Valor</label>
+                        <input type="number" placeholder="0.00" id="transaction-value">
+                        <small>Use o sinal - (negativo) para despesas</small>
+
+                        <label for="transaction-date" class="sr-only">Data</label>
+                        <input type="date" id="transaction-date">
+
+                        <div class="buttons">                                
+                            <button class="cancel">Cancelar</button>
+                            <button type="submit" class="save">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script src="./public/scripts/modal.js"></script>
 </body>
 </html>

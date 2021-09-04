@@ -1,6 +1,6 @@
 1-Build the structure using HTML (no modal yet) - done
 2-Adequate the layout using CSS - done
-3-Create the modal using HTML, CSS and JS
+3-Create the modal using HTML, CSS and JS - done
 4-Make everything works with JS
 5-Use cookies/browser memory to save the infos
 6-Create a backend 
