@@ -33,9 +33,8 @@ body{
 
 .container{
     max-width: 100%;
+    height: max(100%, 100vh);
     overflow-x: hidden;
-
-    position: relative;
 }
 
 /*sr-only is a class to be used on labels and make it be hidden in the screen, but they still is findable for
