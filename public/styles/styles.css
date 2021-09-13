@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+/* General configurations */
+
 *{
     margin: 0;
     padding: 0;
@@ -29,6 +31,10 @@ body{
     background-color: var(--background);
 
     overflow-x: hidden;
+}
+
+a{
+    cursor: pointer;
 }
 
 .container{

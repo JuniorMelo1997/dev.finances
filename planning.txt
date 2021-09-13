@@ -1,9 +1,10 @@
 1-Build the structure using HTML (no modal yet) - done
 2-Adequate the layout using CSS - done
 3-Create the modal using HTML, CSS and JS - done
-4-Make everything works with JS
+4-Make everything works with JS - still need to create a delete button
 5-Use cookies/browser memory to save the infos
-6-Create a backend 
+6-Responsive
+7-Create a backend 
 
 More details to me added later. Option:
 Create a login system? Maybe

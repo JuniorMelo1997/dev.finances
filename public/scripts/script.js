@@ -44,8 +44,12 @@ saveButton.addEventListener("click", ()=>{
 
 function formatDate(){
     var newTrDate = trDate.value.split("-");
-
-    return newTrDate[2] + "/" + newTrDate[1] + "/" + newTrDate[0];
+    
+    if(newTrDate.length == 3){
+        return newTrDate[2] + "/" + newTrDate[1] + "/" + newTrDate[0];
+    } else{
+        return "-";
+    }
 }
 
 /* Add new row in the table */
@@ -56,10 +60,18 @@ function addNewRow(){
     var description = row.insertCell(0);
     var value = row.insertCell(1);
     var date = row.insertCell(2);
+    var deleteButton = row.insertCell(3);
     
-    description.innerHTML = trDescription.value;
-    value.innerHTML = trValue.value;
+    description.innerHTML = trDescription.value
+    value.innerHTML = trValue.value;       
     date.innerHTML = formatDate();
+
+    deleteButton.innerHTML = "<a><img src=\"./public/img/delete-button.svg\"></a>";
+
+    deleteButton.addEventListener("click", ()=>{
+        row.remove();
+        calculateBalance();
+    })
 
     description.classList.add("description");
     value.classList.add("value");
@@ -83,9 +95,11 @@ function calculateBalance(){
     /* the "for" below starts on "i = 1" because i == 0 is the head row of the table */
     for(i=1; i<tableLenght; i++){
         var val = Number(table.rows[i].cells[1].innerHTML);
-        
+            
         if(val < 0){
             resOut += val;
+
+            table.rows[i].cells[1].style.color = "#E92929"
         }
 
         if(val >= 0){
@@ -93,6 +107,7 @@ function calculateBalance(){
         }
 
         resTot += val;
+        
     }
 
     income.innerHTML = "R$ " + resIn;
