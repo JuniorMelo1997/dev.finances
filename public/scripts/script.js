@@ -2,9 +2,10 @@ const addNew = document.querySelector(".button-add-new");
 const modal = document.querySelector(".modal-container");
 const cancelButton = document.querySelector(".cancel");
 const saveButton = document.querySelector(".save");
+const invertButton = document.querySelector(".invert");
 
 const trDescription = document.querySelector("#transaction-description");
-const trValue = document.querySelector("#transaction-value");
+var trValue = document.querySelector("#transaction-value");
 const trDate = document.querySelector("#transaction-date");  
 
 var income = document.querySelector(".income p");
@@ -52,6 +53,15 @@ window.addEventListener("load", ()=>{
 income.innerHTML = "R$ 0,00";
 expense.innerHTML = "R$ 0,00";
 total.innerHTML = "R$ 0,00";
+
+/* Inverting the value */
+invertButton.addEventListener("click", ()=>{
+    if(trValue.value[0] == "-"){
+        trValue.value = trValue.value.slice(1);
+    }else{
+        trValue.value = "-" + trValue.value;
+    }
+})
 
 /* Working with the modal */
 addNew.addEventListener("click", ()=>{
