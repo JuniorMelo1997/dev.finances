@@ -3,7 +3,7 @@
 3-Create the modal using HTML, CSS and JS - done
 4-Make everything works with JS - still need to create a delete button - done
 5-Use cookies/browser memory to save the infos - done (used Local Storage)
-6-Responsive
+6-Responsive - done
 7-Create a backend 
 
 More details to be added later. Option:
