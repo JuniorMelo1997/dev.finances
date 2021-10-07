@@ -13,6 +13,41 @@ var total= document.querySelector(".total p");
 
 const table = document.querySelector(".description table");
 
+/* Setting initial table with values saved in local storage */
+window.addEventListener("load", ()=>{
+    for (let [keyLS, valueLS] of Object.entries(localStorage)) {
+        var row = table.insertRow(1);
+        
+        var description = row.insertCell(0);
+        var value = row.insertCell(1);
+        var date = row.insertCell(2);
+        var deleteButton = row.insertCell(3);
+        
+        description.innerHTML = `${keyLS}`;
+
+        newValueLS = valueLS.split(",");
+        
+        value.innerHTML = `${newValueLS[0]}`;  
+        date.innerHTML = formatDate(newValueLS[1]);
+
+
+        deleteButton.innerHTML = "<a><img src=\"./public/img/delete-button.svg\"></a>";
+
+        deleteButton.addEventListener("click", ()=>{
+            row.remove();
+            localStorage.removeItem(keyLS);
+            calculateBalance();
+        })
+
+        description.classList.add("description");
+        value.classList.add("value");
+        date.classList.add("date");
+
+        calculateBalance();
+        
+      }
+})
+
 /* Starting values */
 income.innerHTML = "R$ 0,00";
 expense.innerHTML = "R$ 0,00";
@@ -29,8 +64,9 @@ cancelButton.addEventListener("click", ()=>{
     modal.classList.add("inactive");
 })
 
-saveButton.addEventListener("click", ()=>{    
-    addNewRow();
+saveButton.addEventListener("click", ()=>{   
+    
+    addNewTransaction();
 
     calculateBalance();
 
@@ -40,10 +76,18 @@ saveButton.addEventListener("click", ()=>{
 })
 
 
+/* Add new transaction */
+
+function addNewTransaction(){
+    localStorage.setItem(trDescription.value, [trValue.value, trDate.value]);
+
+    addNewRow();
+}
+
 /* Formating date */
 
-function formatDate(){
-    var newTrDate = trDate.value.split("-");
+function formatDate(dateToFormat){
+    var newTrDate = dateToFormat.split("-");
     
     if(newTrDate.length == 3){
         return newTrDate[2] + "/" + newTrDate[1] + "/" + newTrDate[0];
@@ -64,12 +108,13 @@ function addNewRow(){
     
     description.innerHTML = trDescription.value
     value.innerHTML = trValue.value;       
-    date.innerHTML = formatDate();
+    date.innerHTML = formatDate(trDate.value);
 
     deleteButton.innerHTML = "<a><img src=\"./public/img/delete-button.svg\"></a>";
 
     deleteButton.addEventListener("click", ()=>{
         row.remove();
+        localStorage.removeItem(description.innerHTML);
         calculateBalance();
     })
 
